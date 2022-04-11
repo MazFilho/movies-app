@@ -26,6 +26,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+#
+
 # MoviesApp - (The Movie DB)
 
 Este projecto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 13.1.4.
