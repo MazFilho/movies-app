@@ -1,0 +1,11 @@
+@import '../../theme';
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  align-items: center;
+  font-size: 2em;
+  background-color: $primary;
+  color: $secondary;
+}

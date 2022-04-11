@@ -1,0 +1,93 @@
+<div class="content">
+  <div class="card">
+    <div class="header">
+      <div class="title">
+        <span>{{ movieDetails?.title }}</span>
+      </div>
+      <div class="date">
+        <span>{{ movieDetails?.release_date | date: "longDate" }}</span>
+      </div>
+    </div>
+
+    <div class="content-info-poster">
+      <div class="info">
+        <h3>Synopsis</h3>
+        <p>{{ movieDetails?.overview }}</p>
+        <h3>Information</h3>
+        <div class="info-group">
+          <div class="info-item">
+            <span class="info-title">Situation</span>
+            <span class="info-value">{{ movieDetails?.status }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-title">Language</span>
+            <span class="info-value">{{
+              movieDetails?.spoken_languages[0]?.name
+            }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-title">Duration</span>
+            <span class="info-value">{{
+              formatDuration(movieDetails?.runtime)
+            }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-title">Budget</span>
+            <span class="info-value">{{
+              movieDetails?.budget | currency
+            }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-title">Revenue</span>
+            <span class="info-value">{{
+              movieDetails?.revenue | currency
+            }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-title">Profit</span>
+            <span class="info-value">{{
+              movieDetails?.revenue - movieDetails?.budget | currency
+            }}</span>
+          </div>
+        </div>
+
+        <div class="content-genre-vote">
+          <div class="genre-group">
+            <div class="genre-item" *ngFor="let genre of movieDetails?.genres">
+              <span>{{ genre?.name }}</span>
+            </div>
+          </div>
+
+          <div class="vote-average">
+            <span
+              [ngClass]="
+                movieDetails?.vote_average < 5
+                  ? 'vote-danger'
+                  : movieDetails?.vote_average < 8
+                  ? 'vote-warning'
+                  : ''
+              "
+              >{{ movieDetails?.vote_average }}</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="poster" *ngIf="movieDetails?.poster_path">
+        <img [src]="posterPathPrefix + movieDetails?.poster_path" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content-videos">
+    <ng-container *ngFor="let video of movieDetails?.videos?.results">
+      <div class="" *ngIf="video?.type === 'Trailer'">
+        <youtube-player [videoId]="video?.key" [height]="500" [width]="1180">
+        </youtube-player>
+      </div>
+    </ng-container>
+  </div>
+  <div class="button">
+    <button type="button" (click)="backSearchMovie()">Search Movie</button>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="content">
+  <div class="search">
+    <app-search-field
+      [control]="searchText"
+      [placeholder]="placeholder"
+    ></app-search-field>
+  </div>
+
+  <div class="search-result-list" *ngIf="movies?.results.length; else notfound">
+    <div
+      class="search-result-item"
+      *ngFor="
+        let movie of movies?.results
+          | paginate
+            : {
+                itemsPerPage: 20,
+                currentPage: page,
+                totalItems: movies?.total_results
+              }
+      "
+      (click)="movieDetails(movie?.id)"
+    >
+      <div class="poster">
+        <img
+          *ngIf="movie?.poster_path"
+          [src]="posterPathPrefix + movie?.poster_path"
+        />
+        <img *ngIf="!movie?.poster_path" src="./../../assets/no-image.png" />
+      </div>
+      <div class="result-info">
+        <div class="title-info">
+          <span>{{ movie?.title }}</span>
+        </div>
+        <div class="vote-average">
+          <span
+            [ngClass]="
+              movie?.vote_average < 5
+                ? 'vote-danger'
+                : movie?.vote_average < 8
+                ? 'vote-warning'
+                : ''
+            "
+            >{{ movie?.vote_average }}</span
+          >
+        </div>
+        <div class="content-info">
+          <span class="date-info">
+            {{ movie?.release_date | date: "longDate" }}
+          </span>
+          <div class="container-desc-gen">
+            <div class="description">
+              <p>{{ movie?.overview }}</p>
+            </div>
+            <div class="genre-list">
+              <div class="genre-item" *ngFor="let genreId of movie?.genre_ids">
+                <span>{{ genres[genreId] }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="paginate">
+  <pagination-controls
+    [responsive]="true"
+    previousLabel="Prev"
+    (pageChange)="currentPage($event)"
+  ></pagination-controls>
+</div>
+
+<ng-template #notfound>
+  <h1 class="notification" *ngIf="movies?.page">No records found!</h1>
+</ng-template>
+

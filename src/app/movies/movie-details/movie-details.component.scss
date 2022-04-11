@@ -1,0 +1,139 @@
+@import "../../../theme";
+
+.content {
+  max-width: 1180px;
+  margin: 50px auto;
+  .card {
+    margin-bottom: 50px;
+    .header {
+      background: $grey4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      .title {
+        color: $primary;
+        font-size: 2em;
+      }
+      .date {
+        font-size: 1.3em;
+        color: $grey2;
+      }
+    }
+    .content-info-poster {
+      display: flex;
+      flex-wrap: wrap;
+      .info {
+        flex: 1 1 300px;
+        padding: 0 20px;
+        background: $grey5;
+        h3 {
+          color: $primary;
+          font-size: 1.3em;
+          font-weight: 500;
+          border-bottom: 2px solid $secondary;
+        }
+        p {
+          color: $grey2;
+        }
+        .info-group {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          flex-wrap: wrap;
+          .info-item {
+            display: flex;
+            flex-direction: column;
+            .info-title {
+              font-size: 1.1em;
+              color: $primary;
+            }
+            .info-value {
+              color: $grey2;
+            }
+          }
+        }
+        .content-genre-vote {
+          margin-top: 140px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .genre-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            .genre-item {
+              background: $white;
+              padding: 5px;
+              border-radius: 25px;
+              border: 1px solid $primary;
+            }
+          }
+          .vote-average {
+            border: 4px solid rgb(0, 206, 209);
+            background: rgb(3, 37, 65);
+            color: rgb(0, 206, 209);
+            width: 90px;
+            height: 90px;
+            position: relative;
+            top: -65px;
+            right: 122px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6em;
+            margin-bottom: -56px;
+          }
+        }
+      }
+    }
+  }
+  .button {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    button {
+      padding: 10px;
+      font-size: larger;
+      background: $primary;
+      color: $secondary;
+      border: 4px solid $secondary;
+      border-radius: 15px;
+      cursor: pointer;
+      &:hover {
+        background: $secondary;
+        color: $primary;
+        border-color: $primary;
+      }
+    }
+  }
+}
+
+.vote-danger {
+  color: $danger;
+}
+
+.vote-warning {
+  color: $warning;
+}
+
+@media (max-width: 615px) {
+  .poster {
+    width: 100%;
+    img {
+      width: 100% !important;
+    }
+  }
+  .content-genre-vote {
+    margin-bottom: 20px;
+  }
+  .vote-average {
+    width: 50px !important;
+    height: 50px !important;
+    top: -52 !important;
+    right: -13px !important;
+    font-size: 1.3em !important;
+  }
+}

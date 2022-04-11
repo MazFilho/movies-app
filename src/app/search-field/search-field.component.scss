@@ -1,0 +1,13 @@
+@import '../../theme';
+
+.search-filter {
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  background: $grey4;
+  height: 35px;
+  font-size: 1em;
+  padding: 0 20px;
+  color: $grey2;
+  outline: 0;
+}
